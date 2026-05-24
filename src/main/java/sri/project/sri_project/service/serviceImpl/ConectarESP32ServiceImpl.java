@@ -1,8 +1,8 @@
 package sri.project.sri_project.service.serviceImpl;
 
 import sri.project.sri_project.service.ConectarEsp32;
-import sri.project.sri_project.Config.ESP32.Esp32ConnecionPort;
-import sri.project.sri_project.Config.ESP32.Esp32SerialAdapter;
+import sri.project.sri_project.integration.Esp32ConnecionPort;
+import sri.project.sri_project.integration.Serial.Esp32SerialAdapter;
 import org.springframework.stereotype.Service;
 
 

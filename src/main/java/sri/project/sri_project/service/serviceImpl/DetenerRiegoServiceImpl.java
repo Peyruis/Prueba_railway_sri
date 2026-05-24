@@ -7,7 +7,7 @@ package sri.project.sri_project.service.serviceImpl;
 
 import sri.project.sri_project.service.DetenerRiegoService;
 import sri.project.sri_project.repository.EstadisticasRepository;
-import sri.project.sri_project.Config.ESP32.RiegoPort;
+import sri.project.sri_project.integration.ControlRiego;
 import sri.project.sri_project.model.EstadoSistema;
 import sri.project.sri_project.model.TanqueAgua;
 
@@ -23,14 +23,14 @@ import org.springframework.stereotype.Service;
 public class DetenerRiegoServiceImpl implements DetenerRiegoService {
     
     
-    private final RiegoPort port;
+    private final ControlRiego port;
     private final TanqueAgua tanque;
 
     private EstadisticasRepository repository;
 
     private static final int DETENER_RIEGO = 0;
 
-    public DetenerRiegoServiceImpl(RiegoPort port, TanqueAgua tanque, EstadisticasRepository repository) {
+    public DetenerRiegoServiceImpl(ControlRiego port, TanqueAgua tanque, EstadisticasRepository repository) {
         this.port = port;
         this.tanque = tanque;
         this.repository = repository;

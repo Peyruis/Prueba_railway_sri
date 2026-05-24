@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sri.project.sri_project.Config.ESP32;
+package sri.project.sri_project.integration.Serial;
 
 import org.springframework.stereotype.Component;
+import sri.project.sri_project.integration.Esp32ConnecionPort;
+import sri.project.sri_project.integration.ControlRiego;
 
 /**
  *
@@ -16,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class Esp32SerialRiego implements RiegoPort {
+public class Esp32SerialRiego implements ControlRiego {
     
 
     private final Esp32ConnecionPort port;

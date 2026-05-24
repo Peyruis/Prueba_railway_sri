@@ -26,7 +26,7 @@ public class VisualizarEstadisticasServiceImpl implements EstadisticasService {
         this.repository = repository;
     }
     @Override
-    public Map<String, Double> obtenerDatosHumedadHistorica() {
+    public Map<String, Integer> obtenerDatosHumedadHistorica() {
         return repository.obtenerHumedadPromedioPorHora();
     }
 

@@ -4,7 +4,7 @@
  */
 
 
-package sri.project.sri_project.Config.ESP32;
+package sri.project.sri_project.integration.Serial;
 
 
 /**

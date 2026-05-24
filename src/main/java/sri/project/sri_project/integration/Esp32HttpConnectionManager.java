@@ -1,4 +1,4 @@
-package sri.project.sri_project.Config.ESP32;
+package sri.project.sri_project.integration;
 
 
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -7,12 +7,13 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-public class Esp32HttpConnection implements RiegoPort {
+public class Esp32HttpConnectionManager implements ControlRiego {
+
     private String broker = "ssl://d293d13a6a7c49bbbc434365cac41121.s1.eu.hivemq.cloud:8883"; // Usa 1883 para pruebas iniciales sin SSL
     private String clientId = "JavaAppClient";
     private MqttClient client;
 
-    public Esp32HttpConnection() {
+    public Esp32HttpConnectionManager() {
         try {
             // Usamos MemoryPersistence para evitar errores de escritura en disco
             MemoryPersistence persistence = new MemoryPersistence();

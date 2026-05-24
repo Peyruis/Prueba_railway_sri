@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface EstadisticasService {
 
-    Map<String, Double> obtenerDatosHumedadHistorica();
+    Map<String, Integer> obtenerDatosHumedadHistorica();
     Map<String, Integer> obtenerDatosModosRiego();
 
 }

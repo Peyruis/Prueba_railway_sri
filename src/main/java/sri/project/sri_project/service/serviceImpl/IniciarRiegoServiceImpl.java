@@ -6,7 +6,7 @@ package sri.project.sri_project.service.serviceImpl;
 
 
 import sri.project.sri_project.service.IniciarRiegoService;
-import sri.project.sri_project.Config.ESP32.RiegoPort;
+import sri.project.sri_project.integration.ControlRiego;
 import sri.project.sri_project.model.EstadoSistema;
 import sri.project.sri_project.model.TanqueAgua;
 
@@ -22,13 +22,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class IniciarRiegoServiceImpl implements IniciarRiegoService {
 
-    private final RiegoPort riegoPort;
+    private final ControlRiego riegoPort;
     private final TanqueAgua tanque;
 
     private static final int INICIAR_RIEGO = 1;
 
 
-    public IniciarRiegoServiceImpl(RiegoPort riegoPort, TanqueAgua tanque) {
+    public IniciarRiegoServiceImpl(ControlRiego riegoPort, TanqueAgua tanque) {
         this.riegoPort = riegoPort;
         this.tanque = tanque;
 

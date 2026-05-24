@@ -14,10 +14,9 @@ import jakarta.persistence.Entity;
  * */
 
 
-@Entity(name = "usuarios")
+
 public class User {
     private Integer id;
-    @Column(name = "username")
     private String username;
     private String passwordHash;
     private String rol;

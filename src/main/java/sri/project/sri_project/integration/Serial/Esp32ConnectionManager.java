@@ -1,8 +1,9 @@
-package sri.project.sri_project.Config.ESP32;
+package sri.project.sri_project.integration.Serial;
 
 
 import com.fazecast.jSerialComm.SerialPort;
 import org.springframework.context.annotation.Configuration;
+import sri.project.sri_project.integration.Esp32ConnecionPort;
 
 
 @Configuration
