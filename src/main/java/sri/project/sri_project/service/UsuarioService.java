@@ -15,5 +15,6 @@ import sri.project.sri_project.model.User;
 
 public interface UsuarioService {
     
-       User ejecutar(String username, String passwordIngresada);
+    User ejecutar(String username, String passwordIngresada);
+    User autenticarConGoogle(String idTokenString);
 }

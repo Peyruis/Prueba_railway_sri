@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.eclipse.paho.client.mqttv3.*;
 import org.springframework.stereotype.Component;
 import sri.project.sri_project.dto.SensorData;
+import sri.project.sri_project.service.serviceImpl.ProcesarDatosService;
 
 import java.util.function.Consumer;
 
@@ -14,6 +15,7 @@ import java.util.function.Consumer;
 public class Esp32MqttSensor {
 
     private final Esp32MqttConnectionManager mqtt;
+    private final ProcesarDatosService procesarDatosService;
 
     @Setter
     private Consumer<SensorData> onDataReceived;
@@ -21,8 +23,9 @@ public class Esp32MqttSensor {
     @Getter
     private SensorData ultimoDato;
 
-    public Esp32MqttSensor(Esp32MqttConnectionManager mqtt) {
+    public Esp32MqttSensor(Esp32MqttConnectionManager mqtt, ProcesarDatosService procesarDatosService) {
         this.mqtt = mqtt;
+        this.procesarDatosService = procesarDatosService;
     }
 
 
@@ -30,6 +33,10 @@ public class Esp32MqttSensor {
     public void iniciar() {
 
         try {
+            if (!mqtt.estaConectado() || mqtt.getClient() == null) {
+                System.err.println("[MQTT] Sensor no suscrito: cliente desconectado");
+                return;
+            }
 
             MqttClient client = mqtt.getClient();
 
@@ -88,6 +95,7 @@ public class Esp32MqttSensor {
 
             SensorData sensorData = new SensorData(humedad, distancia);
             ultimoDato = sensorData;
+            procesarDatosService.procesar(sensorData);
 
             if (onDataReceived != null) {
                 onDataReceived.accept(sensorData);

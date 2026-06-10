@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sri.project.sri_project.integration.Esp32MqttConnectionManager;
 
 @Controller
@@ -27,9 +28,13 @@ public class MqttController {
     }
 
     @PostMapping("/connect")
-    public String connect() {
-
-        mqttManager.conectar();
+    public String connect(RedirectAttributes redirectAttributes) {
+        try {
+            mqttManager.conectar();
+            redirectAttributes.addFlashAttribute("mensaje", "Conexión MQTT establecida correctamente.");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
 
         return "redirect:/mqtt";
     }
@@ -37,10 +42,15 @@ public class MqttController {
     @PostMapping("/publish")
     public String publish(
             @RequestParam String topic,
-            @RequestParam String mensaje
+            @RequestParam String mensaje,
+            RedirectAttributes redirectAttributes
     ) {
-
-        mqttManager.publish(topic, mensaje);
+        try {
+            mqttManager.publish(topic, mensaje);
+            redirectAttributes.addFlashAttribute("mensaje", "Comando MQTT enviado correctamente.");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+        }
 
         return "redirect:/mqtt";
     }

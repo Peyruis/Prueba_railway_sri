@@ -9,9 +9,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String inicio(Model model) {
-
-        model.addAttribute("mensaje", "Spring Boot con JSP funcionando");
-
-        return "index";
+        return "redirect:/login";
     }
 }
